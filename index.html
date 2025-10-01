@@ -13,7 +13,7 @@
       .container{
         display: flex;
         height: 90vh;
-        margin: 30px auto;
+        margin: 5px auto;
         max-width: 1400px;
         border-radius: 24px;
         box-shadow: 0 4px 24px rgba(42,63,95,0.08);
@@ -22,7 +22,7 @@
       }
       .left-column{
         width: 60%;
-        padding: 24px 16px;
+        padding: 24px 60px;
         overflow-y: auto;
         background-color: #ffffff;
         border-top-left-radius: 24px;
@@ -38,18 +38,20 @@
         box-shadow: -2px 0 12px rgba(247,179,43,0.08);
       }
       .figure{
+        width: 100%;
+        margin-bottom: 20px;
         display: flex;
-        margin-bottom: 24px;
         justify-content: center;
+        align-items: center;
       }
       iframe {
-        width: 90%;
-        height: 600px; /* vertical size of each figure */
-        max-width: 900px;
+        width: 100%;
+        height: 600px;
         border: none;
         border-radius: 18px;
         box-shadow: 0 2px 12px rgba(42,63,95,0.10);
-    background: #fff;
+        background: #fff;
+        display: block;
       }
       h1 {
         color: #2a3f5f;
@@ -58,7 +60,7 @@
         -webkit-text-fill-color: transparent;
         font-size: 2.4rem;
         font-weight: 700;
-        margin: 32px 0 16px 0;
+        margin: 10px 0 10px 0;
         text-align: center;
       }
       h2 {
@@ -75,6 +77,52 @@
         color: #2a3f5f;
         box-shadow: 0 2px 8px rgba(247,179,43,0.06);
       }
+      /* testing dropdown button from example */
+      .dropbtn {
+        background: #F7B32B;
+        color: #2a3f5f;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 20px;
+        margin: 12px 0 16px 0;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(42,63,95,0.08);
+        transition: background 0.2s, color 0.2s;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 10px;
+        box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-family: "Open Sans", verdana, arial, sans-serif;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 6px 10px;
+        margin: 2px 0;
+        text-decoration: none;
+        display: block;
+        font-size: 0.98rem;
+      }
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {background-color: #ddd;}
+
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {display: block;}
+
+      /* Change the background color of the dropdown button when the dropdown content is shown */
+      .dropdown:hover .dropbtn {background-color: #2a3f5f; color: #fff}
   </style>
 </head>
 <body>
@@ -98,9 +146,27 @@
 
     <!-- Right column with information -->
     <div class="right-column">
-  <h2>Informações</h2>
-  <p>Este dashboard apresenta gráficos interativos que correlacionam a precipitação com os níveis de DBO e DQO para os anos de 2024 e 2025.</p>
+    <h2>Estatísticas por Mês</h2>
+    <!-- Dropdown button for months of the year-->
+    <div class="dropdown">
+      <button class="dropbtn">Mês</button>
+       <div class="dropdown-content">
+        <a href="#">Janeiro</a>
+        <a href="#">Fevereiro</a>
+        <a href="#">Março</a>
+        <a href="#">Abril</a>
+        <a href="#">Maio</a>
+        <a href="#">Junho</a>
+        <a href="#">Julho</a>
+        <a href="#">Agosto</a>
+        <a href="#">Setembro</a>
+        <a href="#">Outubro</a>
+        <a href="#">Novembro</a>
+        <a href="#">Dezembro</a>
+        </div>
     </div>
+    <p> Estatísticas </p>
+    </div> <!--where does this div come from??? find out-->
   </div>
 </body>
 </html>
