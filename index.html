@@ -4,38 +4,77 @@
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <style>
-    body { 
-      font-family: "Open Sans", verdana, arial, sans-serif; 
-      margin: 10px;
-      color: #2a3f5f;
-    }
-    .container{
-      display: flex;
-      height: 90vh;
-    }
-    .left-column{
-      width: 60%;
-      padding:5px;
-      overflow-y: auto;
-      background-color: #ffffff;;
-    }
-    .right-column{
-      width: 40%;
-      padding:5px;
-      overflow-y: auto;
-      background-color: #E5ECF6;
-    }
-    .figure{
-      display: flex;
-      margin-bottom: 5px;
-      justify-content: center;
-    }
-    iframe {
-      width: 80%;
-      height: 600px; /* vertical size of each figure */
-      max-width: 900px;
-      border: none;
-    }
+      body { 
+        font-family: "Open Sans", verdana, arial, sans-serif; 
+        margin: 0;
+        color: #2a3f5f;
+        background-color: #E5ECF6;
+      }
+      .container{
+        display: flex;
+        height: 90vh;
+        margin: 30px auto;
+        max-width: 1400px;
+        border-radius: 24px;
+        box-shadow: 0 4px 24px rgba(42,63,95,0.08);
+        overflow: hidden;
+        background: #fff;
+      }
+      .left-column{
+        width: 60%;
+        padding: 24px 16px;
+        overflow-y: auto;
+        background-color: #ffffff;
+        border-top-left-radius: 24px;
+        border-bottom-left-radius: 24px;
+      }
+      .right-column{
+        width: 40%;
+        padding: 24px 16px;
+        overflow-y: auto;
+        background-color: #E5ECF6;
+        border-top-right-radius: 24px;
+        border-bottom-right-radius: 24px;
+        box-shadow: -2px 0 12px rgba(247,179,43,0.08);
+      }
+      .figure{
+        display: flex;
+        margin-bottom: 24px;
+        justify-content: center;
+      }
+      iframe {
+        width: 90%;
+        height: 600px; /* vertical size of each figure */
+        max-width: 900px;
+        border: none;
+        border-radius: 18px;
+        box-shadow: 0 2px 12px rgba(42,63,95,0.10);
+    background: #fff;
+      }
+      h1 {
+        color: #2a3f5f;
+        background: linear-gradient(90deg, #2a3f5f 100%, #F7B32B 0%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin: 32px 0 16px 0;
+        text-align: center;
+      }
+      h2 {
+        color: #F7B32B;
+        font-size: 1.4rem;
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+      .right-column p {
+        background: #fffbe6;
+        border-left: 6px solid #F7B32B;
+        border-radius: 12px;
+        padding: 12px 16px;
+        color: #2a3f5f;
+        box-shadow: 0 2px 8px rgba(247,179,43,0.06);
+      }
   </style>
 </head>
 <body>
@@ -59,8 +98,8 @@
 
     <!-- Right column with information -->
     <div class="right-column">
-      <h2>Informações</h2>
-      <p>Este dashboard apresenta gráficos interativos que correlacionam a precipitação com os níveis de DBO e DQO para os anos de 2024 e 2025. </p>
+  <h2>Informações</h2>
+  <p>Este dashboard apresenta gráficos interativos que correlacionam a precipitação com os níveis de DBO e DQO para os anos de 2024 e 2025.</p>
     </div>
   </div>
 </body>
