@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <title>Dashboard</title>
   <style>
+      /* Global styles */
       body { 
         font-family: "Open Sans", verdana, arial, sans-serif; 
         margin: 0;
         color: #2a3f5f;
         background-color: #E5ECF6;
       }
-      .container{
+      
+      /*main container*/
+      .container{ 
         display: flex;
         height: 90vh;
         margin: 5px auto;
@@ -37,14 +40,17 @@
         border-bottom-right-radius: 24px;
         box-shadow: -2px 0 12px rgba(247,179,43,0.08);
       }
-      .figure{
+
+      /*figure container*/
+      .figure{ 
         width: 100%;
         margin-bottom: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-      iframe {
+      /*style for embedded plotly figures*/
+      iframe { 
         width: 100%;
         height: 600px;
         border: none;
@@ -53,7 +59,9 @@
         background: #fff;
         display: block;
       }
-      h1 {
+
+      /*page title*/
+      h1 { 
         color: #2a3f5f;
         background: linear-gradient(90deg, #2a3f5f 100%, #F7B32B 0%);
         -webkit-background-clip: text;
@@ -63,13 +71,15 @@
         margin: 10px 0 10px 0;
         text-align: center;
       }
-      h2 {
+      /*right column title*/
+      h2 { 
         color: #F7B32B;
         font-size: 1.4rem;
         margin-top: 0;
         margin-bottom: 12px;
       }
-      .right-column p {
+      /*paragraphs in right column*/
+      .right-column p { 
         background: #fffbe6;
         border-left: 6px solid #F7B32B;
         border-radius: 12px;
@@ -77,8 +87,9 @@
         color: #2a3f5f;
         box-shadow: 0 2px 8px rgba(247,179,43,0.06);
       }
-      /* testing dropdown button from example */
-      .dropbtn {
+      /* testing dropdown button from example 1*/
+      /*the button*/
+      .dropbtn { 
         background: #F7B32B;
         color: #2a3f5f;
         border: none;
@@ -91,11 +102,13 @@
         box-shadow: 0 2px 8px rgba(42,63,95,0.08);
         transition: background 0.2s, color 0.2s;
       }
-      .dropdown {
+      /*the wrapper*/
+      .dropdown { 
         position: relative;
         display: inline-block;
       }
-      .dropdown-content {
+      /*the dropdown menu*/
+      .dropdown-content { 
         display: none;
         position: absolute;
         background-color: #fff;
@@ -106,8 +119,8 @@
         border-radius: 12px;
         overflow: hidden;
       }
-      /* Links inside the dropdown */
-      .dropdown-content a {
+      /* text inside the dropdown */
+      .dropdown-content a { 
         color: black;
         padding: 6px 10px;
         margin: 2px 0;
@@ -123,6 +136,75 @@
 
       /* Change the background color of the dropdown button when the dropdown content is shown */
       .dropdown:hover .dropbtn {background-color: #2a3f5f; color: #fff}
+      
+
+      /* Month selector styles from example 2 */      
+      .toggle-container{ /*wrapper for month selector*/
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 30px;
+        margin: 3px 2px;
+      }
+      /* Month selector styles from example 2 */
+      .month-selector{ /*wrapper for month selector*/
+        font: "Open Sans", verdana, arial, sans-serif;
+        background-color: #F7B32B;
+        color: #2a3f5f;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 20px;
+        margin: 12px 0 16px 0;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(42,63,95,0.08);
+        transition: background 0.2s, color 0.2s;
+        position: relative;
+      }
+      .month-selector__toggle{ /*the clickable area*/
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.6rem;
+        cursor: pointer;
+      }
+      .month-selector-toggle-head__icon{ /*the arrow icon*/
+        transition: var(--transition);
+      }
+
+      /*rotate the arrow icon*/
+      .month-selector-toggle-head__icon--rotate{ 
+        transform: rotate(-180deg);
+      }
+      .month-select-list{
+        max-height: 30rem;
+        overflow-y: scroll;
+        padding: 8px 0;
+        border-radius: 12px;
+        position: absolute;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 12px rgba(42,63,95,0.10);
+        transition: max-height 0.3s ease-in-out; /*test transition*/
+        top: calc(100% + 1rem); /* position month list below the toggle with space */
+        visibility: hidden;
+        opacity: 0;        
+      }
+      .month-select-list__item{
+        padding: 15px 1px;
+        font-size: 0.98rem;
+        color: #2a3f5f;
+        cursor: pointer;
+      }
+      .month-select-list__item:hover{
+        background-color: #F7B32B;
+        color: #fff;
+      }
+
+      .month-select-list--show{
+        visibility: visible;
+        opacity: 1;
+        top: calc(100% + 0.75rem);
+      }
+
   </style>
 </head>
 <body>
@@ -147,7 +229,43 @@
     <!-- Right column with information -->
     <div class="right-column">
     <h2>Estatísticas por Mês</h2>
-    <!-- Dropdown button for months of the year-->
+
+    <!-- Month selector from example 2 -->
+    <div class="toggle-container">
+      <div class="month-selector">
+        <div class="month-selector__toggle">
+          <span class="month-selector-toggle__head">Janeiro</span>
+          <i class="month-selector-toggle-head__icon"></i>
+        </div> <!--month selector toggle-->
+        <div class="month-select-list">
+          <ul>     
+            <li class="month-select-list__item" data-id="Janeiro=true">Janeiro</li>
+            <li class="month-select-list__item" data-id="uf=12">Fevereiro</li>
+            <li class="month-select-list__item" data-id="uf=13">Março</li>
+            <li class="month-select-list__item" data-id="uf=14">Abril</li>
+            <li class="month-select-list__item" data-id="uf=15">Maio</li>
+            <li class="month-select-list__item" data-id="uf=16">Junho</li>
+            <li class="month-select-list__item" data-id="uf=17">Julho</li>
+            <li class="month-select-list__item" data-id="uf=18">Agosto</li>
+            <li class="month-select-list__item" data-id="uf=19">Setembro</li>
+            <li class="month-select-list__item" data-id="uf=20">Outubro</li>
+            <li class="month-select-list__item" data-id="uf=21">Novembro</li>
+            <li class="month-select-list__item" data-id="uf=22">Dezembro</li>
+          </ul>
+        </div> <!--month select list-->
+      </div> <!--month selector-->
+    </div> <!--toggle container-->
+
+
+
+
+
+
+
+
+
+
+    <!-- Dropdown button for months of the year example 1-->
     <div class="dropdown">
       <button class="dropbtn">Mês</button>
        <div class="dropdown-content">
