@@ -119,6 +119,8 @@
         border-radius: 12px;
         overflow: hidden;
       }
+      /* also allow JS to show menu adding class 'show' */
+      .dropdown-content.show { display: block; }
       /* text inside the dropdown */
       .dropdown-content a { 
         color: black;
@@ -137,74 +139,6 @@
       /* Change the background color of the dropdown button when the dropdown content is shown */
       .dropdown:hover .dropbtn {background-color: #2a3f5f; color: #fff}
       
-
-      /* Month selector styles from example 2 */      
-      .toggle-container{ /*wrapper for month selector*/
-        display: grid;
-        grid-template-columns: auto;
-        grid-gap: 30px;
-        margin: 3px 2px;
-      }
-      /* Month selector styles from example 2 */
-      .month-selector{ /*wrapper for month selector*/
-        font: "Open Sans", verdana, arial, sans-serif;
-        background-color: #F7B32B;
-        color: #2a3f5f;
-        border: none;
-        border-radius: 8px;
-        padding: 8px 20px;
-        margin: 12px 0 16px 0;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(42,63,95,0.08);
-        transition: background 0.2s, color 0.2s;
-        position: relative;
-      }
-      .month-selector__toggle{ /*the clickable area*/
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.6rem;
-        cursor: pointer;
-      }
-      .month-selector-toggle-head__icon{ /*the arrow icon*/
-        transition: var(--transition);
-      }
-
-      /*rotate the arrow icon*/
-      .month-selector-toggle-head__icon--rotate{ 
-        transform: rotate(-180deg);
-      }
-      .month-select-list{
-        max-height: 30rem;
-        overflow-y: scroll;
-        padding: 8px 0;
-        border-radius: 12px;
-        position: absolute;
-        width: 100%;
-        background-color: #fff;
-        box-shadow: 0 2px 12px rgba(42,63,95,0.10);
-        transition: max-height 0.3s ease-in-out; /*test transition*/
-        top: calc(100% + 1rem); /* position month list below the toggle with space */
-        visibility: hidden;
-        opacity: 0;        
-      }
-      .month-select-list__item{
-        padding: 15px 1px;
-        font-size: 0.98rem;
-        color: #2a3f5f;
-        cursor: pointer;
-      }
-      .month-select-list__item:hover{
-        background-color: #F7B32B;
-        color: #fff;
-      }
-
-      .month-select-list--show{
-        visibility: visible;
-        opacity: 1;
-        top: calc(100% + 0.75rem);
-      }
-
   </style>
 </head>
 <body>
@@ -214,78 +148,49 @@
     <div class="left-column">
       <div class="figure">
         <iframe src="plots/grafico_interativo_precipitacao_DBO_2024.html"></iframe>
-      </div>
+      </div> <!--figure-->
       <div class="figure">
         <iframe src="plots/grafico_interativo_precipitacao_DBO_2025.html"></iframe>
-      </div>
+      </div> <!--figure-->
       <div class="figure">
         <iframe src="plots/grafico_interativo_precipitacao_DQO_2024.html"></iframe>
-      </div>
+      </div> <!--figure-->
       <div class="figure">
         <iframe src="plots/grafico_interativo_precipitacao_DQO_2025.html"></iframe>
-      </div>
-    </div>
+      </div> <!--figure-->
+    </div><!--left-column-->
 
     <!-- Right column with information -->
     <div class="right-column">
     <h2>Estatísticas por Mês</h2>
 
-    <!-- Month selector from example 2 -->
-    <div class="toggle-container">
-      <div class="month-selector">
-        <div class="month-selector__toggle">
-          <span class="month-selector-toggle__head">Janeiro</span>
-          <i class="month-selector-toggle-head__icon"></i>
-        </div> <!--month selector toggle-->
-        <div class="month-select-list">
-          <ul>     
-            <li class="month-select-list__item" data-id="Janeiro=true">Janeiro</li>
-            <li class="month-select-list__item" data-id="uf=12">Fevereiro</li>
-            <li class="month-select-list__item" data-id="uf=13">Março</li>
-            <li class="month-select-list__item" data-id="uf=14">Abril</li>
-            <li class="month-select-list__item" data-id="uf=15">Maio</li>
-            <li class="month-select-list__item" data-id="uf=16">Junho</li>
-            <li class="month-select-list__item" data-id="uf=17">Julho</li>
-            <li class="month-select-list__item" data-id="uf=18">Agosto</li>
-            <li class="month-select-list__item" data-id="uf=19">Setembro</li>
-            <li class="month-select-list__item" data-id="uf=20">Outubro</li>
-            <li class="month-select-list__item" data-id="uf=21">Novembro</li>
-            <li class="month-select-list__item" data-id="uf=22">Dezembro</li>
-          </ul>
-        </div> <!--month select list-->
-      </div> <!--month selector-->
-    </div> <!--toggle container-->
+
+      <!-- Dropdown button for months of the year example 1-->
+      <div class="dropdown">
+        <button class="dropbtn" id="dropBtn">Mês ▾</button>
+          <div class="dropdown-content" id="monthList">
+            <a href="#" data-month="janeiro">Janeiro</a>
+            <a href="#" data-month="fevereiro">Fevereiro</a>
+            <a href="#" data-month="marco">Março</a>
+            <a href="#" data-month="abril">Abril</a>
+            <a href="#" data-month="maio">Maio</a>
+            <a href="#" data-month="junho">Junho</a>
+            <a href="#" data-month="julho">Julho</a>
+            <a href="#" data-month="agosto">Agosto</a>
+            <a href="#" data-month="setembro">Setembro</a>
+            <a href="#" data-month="outubro">Outubro</a>
+            <a href="#" data-month="novembro">Novembro</a>
+            <a href="#" data-month="dezembro">Dezembro</a>
+          </div><!--dropdown content-->
+      </div><!--dropdown-->
 
 
 
 
 
-
-
-
-
-
-    <!-- Dropdown button for months of the year example 1-->
-    <div class="dropdown">
-      <button class="dropbtn">Mês</button>
-       <div class="dropdown-content">
-        <a href="#">Janeiro</a>
-        <a href="#">Fevereiro</a>
-        <a href="#">Março</a>
-        <a href="#">Abril</a>
-        <a href="#">Maio</a>
-        <a href="#">Junho</a>
-        <a href="#">Julho</a>
-        <a href="#">Agosto</a>
-        <a href="#">Setembro</a>
-        <a href="#">Outubro</a>
-        <a href="#">Novembro</a>
-        <a href="#">Dezembro</a>
-        </div>
-    </div>
     <p> Estatísticas </p>
-    </div> <!--where does this div come from??? find out-->
-  </div>
+    </div> <!--right column-->
+  </div><!--container-->
 </body>
 </html>
 
